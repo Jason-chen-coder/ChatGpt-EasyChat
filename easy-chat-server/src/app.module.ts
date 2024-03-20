@@ -6,25 +6,28 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { AllExceptionFilter } from './common/all-exception.filter';
+import { NV_Users } from './auth/entities/auth.entity';
 @Module({
-  imports: [AuthModule,TypeOrmModule.forRoot(
-    {
+  imports: [
+    AuthModule,
+    TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '123456',
-      database: 'easychat',// 注意设置为全小写
-      entities: ["dist/**/*.entity{.ts,.js}"],
-      synchronize: true,
+      password: '123456789',
+      database: 'easychat', // 注意设置为全小写
+      // entities: ['dist/**/*.entity{.ts,.js}'],
+      entities: [NV_Users],
+      synchronize: true, // 自动化同步表，本地可自动打开，线上数据库不建议打开
       autoLoadEntities: true, //自动加载实体
-    }
-  )],
+    }),
+  ],
   controllers: [AppController],
   providers: [
     AppService,
-    {provide:APP_GUARD,useClass:JwtAuthGuard,},
-    {provide:APP_FILTER,useClass:AllExceptionFilter}
+    { provide: APP_GUARD, useClass: JwtAuthGuard },
+    { provide: APP_FILTER, useClass: AllExceptionFilter },
   ],
 })
 export class AppModule {}
