@@ -34,6 +34,9 @@ dependencies:
     version: 6.22.3(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
+  '@easy-chat/common':
+    specifier: file:../easy-chat-common
+    version: file:../easy-chat-common
   '@types/react':
     specifier: ^18.2.64
     version: 18.2.65
@@ -3440,4 +3443,9 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  file:../easy-chat-common:
+    resolution: {directory: ../easy-chat-common, type: directory}
+    name: '@easy-chat/common'
     dev: true

@@ -1,7 +1,7 @@
 import { Segmented } from "antd";
 import { useState } from "react";
 import styles from './Login.module.less'
-import { SignType } from '../../../../easy-chat-common'
+import { SignType } from '@easy-chat/common'
 import { Button, Checkbox, Form, type FormProps, Input } from 'antd';
 type FieldType = {
     username?: string;

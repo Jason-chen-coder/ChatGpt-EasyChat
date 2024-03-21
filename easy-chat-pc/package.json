@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
+    "@easy-chat/common":"file:../easy-chat-common",
     "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",

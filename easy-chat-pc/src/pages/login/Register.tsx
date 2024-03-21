@@ -1,4 +1,4 @@
-import { SignUpType, SingUpData } from '../../../../easy-chat-common'
+import { SignUpType, SingUpData } from '@easy-chat/common'
 import { Segmented } from "antd";
 import { useState } from "react";
 import styles from './Login.module.less'

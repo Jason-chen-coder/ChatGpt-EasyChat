@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CResponse } from '../../../easy-chat-common/index'
+import { CResponse } from '@easy-chat/common'
 const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL_DEV,
   timeout: 10000,

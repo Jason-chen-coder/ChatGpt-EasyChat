@@ -49,6 +49,9 @@ dependencies:
     version: 0.3.20(mysql2@3.9.2)(ts-node@10.9.2)
 
 devDependencies:
+  '@easy-chat/common':
+    specifier: file:../easy-chat-common
+    version: file:../easy-chat-common
   '@nestjs/cli':
     specifier: ^10.0.0
     version: 10.3.2
@@ -5695,4 +5698,9 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  file:../easy-chat-common:
+    resolution: {directory: ../easy-chat-common, type: directory}
+    name: '@easy-chat/common'
     dev: true

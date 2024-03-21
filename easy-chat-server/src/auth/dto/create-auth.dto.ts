@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { SignType,SignUpType } from '../../../../easy-chat-common';
+import { SignType, SignUpType } from '@easy-chat/common';
 
 export class CreateAuthDto {
   @ApiProperty({ description: '账号', example: 'admin' })

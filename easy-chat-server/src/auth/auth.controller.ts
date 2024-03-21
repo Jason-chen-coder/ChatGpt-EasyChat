@@ -12,12 +12,11 @@ import { AuthService } from './auth.service';
 import { CreateAuthDto, SingUpData } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { Public } from 'src/common/public.decorator';
-import { CResponse } from '../../../easy-chat-common';
+import { CResponse, SignType } from '@easy-chat/common';
 import { ApiTags, ApiOperation, ApiOkResponse } from '@nestjs/swagger';
 import { LoginResponse, SingUpResponse } from './vo/login-user.vo';
 import { Response } from 'express';
 import { ApiException, CODES } from 'src/common/exception';
-import { SignType } from '../../../easy-chat-common';
 @ApiTags('登录注册')
 @Controller('auth')
 export class AuthController {
