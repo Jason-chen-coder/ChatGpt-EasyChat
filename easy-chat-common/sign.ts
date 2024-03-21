@@ -1,18 +1,22 @@
+export enum SignInType {
+  PassWord = 'password',
+  MessageCode = 'messageCode',
+}
+
 export enum SignType {
-    PassWord = 'password',
-    MessageCode = 'messageCode',
-  }
+  Email = 'email',
+  PhoneNumber = 'phoneNumber',
+}
 
-  export enum SignUpType {
-    Email = 'email',
-    PhoneNumber = 'phoneNumber',
-  }
+export interface SingUpData {
+  phoneNumber?: string;
+  email?: string;
+  userName?: string;
+  password: string;
+  signUpType: SignType;
+}
 
-  export interface SingUpData {
-    phoneNumber?: string;
-    email?: string;
-    userName?:string;
-    password: string;
-    confirmPassword: string;
-    signUpType: SignUpType;
-  }
+export interface PhoneMessageCodeData {
+  phoneNumber: string;
+  type: SignType;
+}

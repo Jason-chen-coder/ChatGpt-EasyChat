@@ -1,7 +1,7 @@
 import { Segmented } from "antd";
 import { useState } from "react";
 import styles from './Login.module.less'
-import { SignType } from '@easy-chat/common'
+import { SignInType } from '@easy-chat/common'
 import { Button, Checkbox, Form, type FormProps, Input } from 'antd';
 type FieldType = {
     username?: string;
@@ -11,7 +11,7 @@ type FieldType = {
 };
 
 const onFinish: FormProps<FieldType>["onFinish"] = (values:FieldType) => {
-    if(values.loginType === SignType.PassWord){
+    if(values.loginType === SignInType.PassWord){
         console.log(values,'账号密码登录')
     }else{
         console.log(values,'手机号登录')
@@ -24,13 +24,13 @@ const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
 
 const segments = [{
     label: '手机验证码登录',
-    value: SignType.MessageCode
+    value: SignInType.MessageCode
 }, {
     label: '账号密码登录',
-    value: SignType.PassWord
+    value: SignInType.PassWord
 }]
 const Login = () => {
-    const [signType, setSignType] = useState(SignType.PassWord);
+    const [signType, setSignType] = useState(SignInType.PassWord);
     const [rememberUser,serRemberUser] = useState(false);
     const [userName,setUserName] = useState('')
     const [password,setPassWord] = useState('')

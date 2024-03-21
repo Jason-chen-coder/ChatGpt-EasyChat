@@ -6,10 +6,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { AllExceptionFilter } from './common/all-exception.filter';
-import { NV_Users } from './auth/entities/auth.entity';
+import { User } from './auth/entities/auth.entity';
+import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     AuthModule,
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -18,7 +20,7 @@ import { NV_Users } from './auth/entities/auth.entity';
       password: '123456789',
       database: 'easychat', // 注意设置为全小写
       // entities: ['dist/**/*.entity{.ts,.js}'],
-      entities: [NV_Users],
+      entities: [User],
       synchronize: true, // 自动化同步表，本地可自动打开，线上数据库不建议打开
       autoLoadEntities: true, //自动加载实体
     }),

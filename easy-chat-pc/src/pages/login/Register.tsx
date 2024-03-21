@@ -1,4 +1,4 @@
-import { SignUpType, SingUpData } from '@easy-chat/common'
+import { SignType, SingUpData } from '@easy-chat/common'
 import { Segmented } from "antd";
 import { useState } from "react";
 import styles from './Login.module.less'
@@ -8,16 +8,16 @@ interface FieldType {
     email?: string;
     userName: string;
     password: string;
-    signUpType: SignUpType;
+    signUpType: SignType;
     messageCode: string;
 }
 
 const segments = [{
     label: '手机注册',
-    value: SignUpType.PhoneNumber
+    value: SignType.PhoneNumber
 }, {
     label: '邮箱注册',
-    value: SignUpType.Email
+    value: SignType.Email
 }]
 enum Step {
     PhoneOrEmail = 'phoneOrEmail',
@@ -25,7 +25,7 @@ enum Step {
     PassWord = 'passWord'
 }
 const Register = () => {
-    const [signUpType, setSignUpType] = useState(SignUpType.PhoneNumber);
+    const [signUpType, setSignUpType] = useState(SignType.PhoneNumber);
     const [phoneNumber, setPhoneNumber] = useState('')
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -34,7 +34,7 @@ const Register = () => {
     const [step, setStep] = useState(Step.PhoneOrEmail);
 
     const onFinish: FormProps<FieldType>["onFinish"] = (values: FieldType) => {
-        const isUsePhone = values.signUpType === SignUpType.PhoneNumber;
+        const isUsePhone = values.signUpType === SignType.PhoneNumber;
         switch (step) {
             case Step.PhoneOrEmail:
                 // 发送验证码
@@ -58,7 +58,7 @@ const Register = () => {
     const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    const isUsePhone = signUpType == SignUpType.PhoneNumber;
+    const isUsePhone = signUpType == SignType.PhoneNumber;
     return <div className="loginWrapper">
         <div>
             <Form
@@ -74,13 +74,13 @@ const Register = () => {
                     <Segmented className={styles.loginType} options={segments} value={signUpType} onChange={value => setSignUpType(value)}>
                     </Segmented>
                 </Form.Item>
-                {(isUsePhone && step == Step.PhoneOrEmail) && <Form.Item<FieldType>
+                {(isUsePhone && step !== Step.PassWord) && <Form.Item<FieldType>
                     name="phoneNumber"
                     rules={[{ required: true, message: '请输入手机号!' }]}
                 >
                     <Input placeholder="手机号" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
                 </Form.Item>}
-                {(!isUsePhone && step == Step.PhoneOrEmail) && <Form.Item<FieldType>
+                {(!isUsePhone && step !== Step.PassWord) && <Form.Item<FieldType>
                     name="email"
                     rules={[{ required: true, message: '请输入邮箱地址!' }]}
                 >
@@ -91,7 +91,7 @@ const Register = () => {
                         name="messageCode"
                         rules={[{ required: true, message: '请输入验证码!' }]}
                     >
-                        <Input.Password placeholder="验证码" value={messageCode} onChange={e => setMessageCode(e.target.value)} />
+                        <Input type='text' placeholder="验证码" value={messageCode} onChange={e => setMessageCode(e.target.value)} />
                     </Form.Item>
                 }
                 {step == Step.PassWord &&

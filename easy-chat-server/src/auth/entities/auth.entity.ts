@@ -1,14 +1,31 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
-@Entity('nv_users')
-export class NV_Users {
-    // id为主键并且自动递增
-    @PrimaryGeneratedColumn()
-    id: number;
+@Entity('user')
+export class User {
+  // id为主键并且自动递增
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    username: string;
+  @Column({ nullable: true })
+  email: string | null;
 
-    @Column()
-    password: string;
+  @Column({ nullable: true })
+  phoneNumber: string | null;
+
+  @Column()
+  userName: string;
+
+  @Column()
+  password: string;
+
+  @Column()
+  signUpType: string;
+
+  @CreateDateColumn()
+  createTime: Date;
 }
